@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <title>Control Interface</title>
+</head>
+<body>
+<div class="container">
+<h1>Control Interface</h1>
+
+<button id="fButton" onclick="sendCommand('forward')">Forward</button>
+<button id="bButton" onclick="sendCommand('backward')">Backward</button>
+<button id="lButton" onclick="sendCommand('left')">Left</button>
+<button id="rButton" onclick="sendCommand('right')">Right</button>
+
+<label class="switch">
+    <input type="checkbox" id="toggleButton">
+    <span class="slider round"></span>
+</label>
+<p id="status">Status: OFF</p>
+</div>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
