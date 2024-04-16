@@ -1,9 +1,11 @@
 import Components
 import gpiozero
+#import Numpy
 
 class Crawler:
     auto_mode:bool = False
     speed:float = 1.0
+    augmentarray = [-80,-60,-40,-20,20,40,60,80]
 
     def __init__(self, drivetrain:gpiozero.Robot, ultrasonic:gpiozero.DistanceSensor, irarray:Components.IRArray):
         self.drivetrain = drivetrain
@@ -31,5 +33,8 @@ class Crawler:
                     case 'backward':
                         self.drivetrain.backward(self.speed)
 
-    def automode():
+    def automode(self):
         pass
+
+    def process_ir(self, sensorreadings):
+        return sum(map(lambda n: 1/n if n != 0 else 0, [a * b for a, b in zip(self.augmentarray, sensorreadings)]))
